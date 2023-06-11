@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext } from "./context";
 
+function AllData() {
+  const ctx = useContext(UserContext);
 
-function AllData(){
-    return(
-        <div>
-             <h3>We Are at the AllData Page</h3>
-             </div>
-    )       
-};
+  return (
+    <div>
+      <h1>{JSON.stringify(ctx.users)}</h1>
+      <h3>We Are at the AllData Page</h3>
+    </div>
+  );
+}
 
 export default AllData;

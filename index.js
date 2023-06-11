@@ -11,23 +11,31 @@ import AllData from "./alldata";
 import { UserContext } from "./context";
 function Spa() {
   return (
-    <BrowserRouter>
-      <UserContext.Provider value={{ users: [] }}>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/createaccount" element={<CreateAccount />}></Route>
-          <Route path="/deposit/" element={<Deposit />}></Route>
-          <Route path="/withdraw/" element={<Withdraw />}></Route>
-          <Route path="/alldata/" element={<AllData />}></Route>
-        </Routes>
-      </UserContext.Provider>
-    </BrowserRouter>
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/createaccount" element={<CreateAccount />} />
+        <Route path="/deposit" element={<Deposit />} />
+        <Route path="/withdraw" element={<Withdraw />} />
+        <Route path="/alldata" element={<AllData />} />
+      </Routes>
+    </>
   );
 }
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Spa />
+    <BrowserRouter>
+      <UserContext.Provider
+        value={{
+          users: [
+            { name: "test name", email: "test@mit.edu", password: "1234" },
+          ],
+        }}
+      >
+        <Spa />
+      </UserContext.Provider>
+    </BrowserRouter>
   </React.StrictMode>
 );
